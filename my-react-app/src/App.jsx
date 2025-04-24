@@ -26,14 +26,14 @@ const App = () => {
   const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/marques')
+    axios.get('https://flaskprediction.fly.dev/marques')
       .then(response => setMarques(response.data.marques))
       .catch(() => setMarques(['Renault', 'Peugeot', 'Citroën', 'Dacia', 'Volkswagen']));
   }, []);
 
   useEffect(() => {
     if (formData.marque) {
-      axios.get(`http://localhost:5000/modeles?marque=${formData.marque}`)
+      axios.get(`https://flaskprediction.fly.dev/modeles?marque=${formData.marque}`)
         .then(response => {
           setModeles(response.data.modeles);
           if (formData.modele && !response.data.modeles.includes(formData.modele)) {
@@ -60,7 +60,7 @@ const App = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('http://localhost:5000/predict', formData);
+      const response = await axios.post('https://flaskprediction.fly.dev/predict', formData);
       setPrediction(response.data.price);
       setShowResult(true);
     } catch (err) {
