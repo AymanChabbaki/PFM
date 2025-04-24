@@ -1,0 +1,420 @@
+/* modern.css */
+
+/* Variables globales */
+:root {
+    --light-bg: #f9f9f9;
+    --light-text: #222;
+    --dark-bg: #121212;
+    --dark-text: #f1f1f1;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --accent: #00d4ff;
+    --radius: 12px;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mode clair / sombre */
+  .light {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+  }
+  
+  .dark {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+  }
+  
+  /* Transitions */
+  * {
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+  
+  /* Layout de base */
+  .modern-app {
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .modern-header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);;
+    color: white;
+    position: relative;
+  }
+  
+  .mode-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s ease;
+    
+    /* Light mode colors */
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: none;
+  }
+  
+  .back-button:hover {
+    background-color: var(--hover-bg);
+    transform: translateX(-2px);
+  }
+  
+  /* Dark mode adjustments */
+  @media (prefers-color-scheme: dark) {
+    .back-button {
+      border-color: var(--border-color-dark);
+    }
+  }
+  
+  /* Alternative using data attribute (if you prefer) */
+  [data-theme="dark"] .back-button {
+    border-color: var(--border-color-dark);
+  }
+  
+  
+  .mode-toggle button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  /* Base Styles */
+.intro-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    isolation: isolate;
+  }
+  
+  /* Image Background with Parallax Effect */
+  .intro-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    animation: scaleIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  @keyframes scaleIn {
+    from { transform: scale(1.2); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Overlay for better text contrast */
+  .intro-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom, 
+      rgba(0,0,0,0.7) 0%, 
+      rgba(0,0,0,0.3) 50%,
+      rgba(0,0,0,0.7) 100%
+    );
+    z-index: -1;
+  }
+  
+  /* Content Container */
+  .intro-content {
+    max-width: 1200px;
+    padding: 2rem;
+    text-align: center;
+    opacity: 0;
+    animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Typography */
+  .intro-content h1 {
+    font-size: clamp(1rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    margin-top: -180px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease-out 0.8s both;
+  }
+  
+  .intro-content p {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    opacity: 0.9;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease-out 1s both;
+  }
+  
+  /* Modern Button */
+  .intro-content button {
+    position: relative;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    animation: fadeIn 0.8s ease-out 1.2s both;
+  }
+  
+  .intro-content button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  
+  .intro-content button:hover {
+    border-color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  
+  .intro-content button:hover::before {
+    left: 100%;
+  }
+  
+  /* Scroll Indicator (Optional) */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+    40% { transform: translateY(-20px) translateX(-50%); }
+    60% { transform: translateY(-10px) translateX(-50%); }
+  }
+  
+  /* Section principale */
+  .modern-main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .form-section {
+    flex: 1 1 400px;
+  }
+  
+  .car-display {
+    flex: 1 1 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Formulaire */
+  .styled-form {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(6px);
+  }
+  
+  .form-row {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-row label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .styled-form input,
+  .styled-form select {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    background-color: white;
+    color: black;
+  }
+  
+  .dark .styled-form input,
+  .dark .styled-form select {
+    background-color: #1e1e1e;
+    color: white;
+    border: 1px solid #444;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .form-buttons button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .form-buttons button[type="submit"] {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .form-buttons button[type="button"] {
+    background-color: var(--secondary);
+    color: white;
+  }
+  
+  /* Résultat */
+  .result-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(0, 128, 0, 0.1);
+    border-left: 5px solid green;
+    border-radius: var(--radius);
+  }
+  
+  .result-box h2 {
+    margin-bottom: 1rem;
+  }
+  
+  /* Erreur */
+  .error-msg {
+    margin-top: 1rem;
+    color: red;
+    font-weight: bold;
+  }
+  
+  /* Voiture */
+  .car-container {
+    text-align: center;
+  }
+  
+  .car-image {
+    max-width: 100%;
+    border-radius: var(--radius);
+    object-fit: cover;
+    z-index: -1;
+    animation: scaleIn 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  .car-description {
+    margin-top: 1rem;
+  }
+  
+  /* Footer */
+  .modern-footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);;
+    color: white;
+  }
+  
+  .modern-footer a {
+    color: #f8f8f8;
+    text-decoration: underline;
+  }
+  
+  /* Animations */
+  .fade-in {
+    animation: fadeIn 1s ease-in;
+  }
+  
+  .slide-in {
+    animation: slideIn 1s ease-out;
+  }
+  
+  .pop-in {
+    animation: popIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  
+  @keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .modern-main {
+      flex-direction: column;
+    }
+  }
+  .pdf-download {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .pdf-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #6e48aa, #9d50bb);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+  }
+  
+  .pdf-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #9d50bb, #6e48aa);
+  }
+  
+  .pdf-button svg {
+    margin-right: 8px;
+  }
