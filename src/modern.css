@@ -36,6 +36,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: -8px;
   }
   
   /* Header */
@@ -385,9 +386,9 @@
   /* Responsive */
   @media (max-width: 768px) {
     .modern-main {
-      flex-direction: column;
+        flex-direction: column-reverse;
     }
-  }
+}
   .pdf-download {
     margin-top: 2rem;
     text-align: center;
