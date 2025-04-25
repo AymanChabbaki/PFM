@@ -388,6 +388,12 @@
     .modern-main {
         flex-direction: column-reverse;
     }
+    .web{
+      font-size: 7px;
+    }
+    .result-box h2 {
+      font-size: 18px;
+  }
 }
   .pdf-download {
     margin-top: 2rem;
