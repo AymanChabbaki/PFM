@@ -101,7 +101,7 @@ const App = () => {
             </svg>
             <footer className="fade-in web">
               Développé par : <br />
-              Ayman Chabbaki - <a href="https://www.linkedin.com/in/your-link">LinkedIn</a> | Afyf Badeddine - <a href="https://www.linkedin.com/in/your-link">LinkedIn</a>
+              Ayman Chabbaki - <a href="https://www.linkedin.com/in/ayman-chabbaki-10aa80281/">LinkedIn</a> | Afyf Badeddine - <a href="https://www.linkedin.com/in/afyf-badreddine-235a07284/">LinkedIn</a>
               </footer>
           </div>
 
