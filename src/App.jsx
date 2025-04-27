@@ -26,14 +26,14 @@ const App = () => {
   const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
-    axios.get('https://flaskprediction.fly.dev/marques')
+    axios.get('https://pfmserver-production.up.railway.app/marques')
       .then(response => setMarques(response.data.marques))
       .catch(() => setMarques(['Renault', 'Peugeot', 'Citroën', 'Dacia', 'Volkswagen']));
   }, []);
 
   useEffect(() => {
     if (formData.marque) {
-      axios.get(`https://flaskprediction.fly.dev/modeles?marque=${formData.marque}`)
+      axios.get(`https://pfmserver-production.up.railway.app/modeles?marque=${formData.marque}`)
         .then(response => {
           setModeles(response.data.modeles);
           if (formData.modele && !response.data.modeles.includes(formData.modele)) {
@@ -60,9 +60,10 @@ const App = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('https://flaskprediction.fly.dev/predict', formData);
+      const response = await axios.post('https://pfmserver-production.up.railway.app/predict', formData);
       setPrediction(response.data.price);
       setShowResult(true);
+      console.log(formData);
     } catch (err) {
       setError(err.response?.data?.error || 'Erreur lors de la prédiction');
     }
@@ -92,6 +93,7 @@ const App = () => {
             <p>Découvrez combien vaudra votre future voiture en quelques clics.</p>
             <button onClick={() => setShowForm(true)}>Estimer Mon Future Voiture Prix</button>
           </div>
+          
           <div className="scroll-indicator">
             <svg style={{
               display: 'block',
