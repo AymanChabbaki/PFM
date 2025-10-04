@@ -26,14 +26,14 @@ const App = () => {
   const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
-    axios.get('https://pfmserver-production.up.railway.app/marques')
+    axios.get('https://aymenenene-carprice.hf.space/marques')
       .then(response => setMarques(response.data.marques))
       .catch(() => setMarques(['Renault', 'Peugeot', 'Citroën', 'Dacia', 'Volkswagen']));
   }, []);
 
   useEffect(() => {
     if (formData.marque) {
-      axios.get(`https://pfmserver-production.up.railway.app/modeles?marque=${formData.marque}`)
+      axios.get(`https://aymenenene-carprice.hf.space/modeles?marque=${formData.marque}`)
         .then(response => {
           setModeles(response.data.modeles);
           if (formData.modele && !response.data.modeles.includes(formData.modele)) {
@@ -60,7 +60,7 @@ const App = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post('https://pfmserver-production.up.railway.app/predict', formData);
+      const response = await axios.post('https://aymenenene-carprice.hf.space/predict', formData);
       setPrediction(response.data.price);
       setShowResult(true);
       console.log(formData);
