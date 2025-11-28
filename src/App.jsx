@@ -101,10 +101,7 @@ const App = () => {
             }} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M12 5v14M19 12l-7 7-7-7" strokeWidth="2" strokeLinecap="round" />
             </svg>
-            <footer className="fade-in web">
-              Développé par : <br />
-              Ayman Chabbaki - <a href="https://www.linkedin.com/in/ayman-chabbaki-10aa80281/">LinkedIn</a> | Afyf Badeddine - <a href="https://www.linkedin.com/in/afyf-badreddine-235a07284/">LinkedIn</a>
-              </footer>
+           
           </div>
 
         </section>
